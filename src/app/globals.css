@@ -68,6 +68,42 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ---------- Scrollbar ---------- */
+
+/* Firefox: стандартные свойства. В Chromium они отключили бы ::-webkit-scrollbar, поэтому только там, где его нет. */
+@supports not selector(::-webkit-scrollbar) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--violet) var(--bg);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--violet-3), var(--violet));
+  background-clip: padding-box;
+  border: 3px solid transparent;
+  border-radius: 999px;
+  min-height: 48px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--lavender), var(--violet-2));
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:active {
+  background: var(--lavender);
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-corner {
+  background: var(--bg);
+}
+
 a {
   color: var(--lavender-2);
 }
