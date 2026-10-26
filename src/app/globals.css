@@ -1,0 +1,509 @@
+:root {
+  --bg: #0a0711;
+  --bg-2: #0f0b17;
+  --bg-3: #110d19;
+  --card: #14101c;
+  --card-2: #17121f;
+  --card-3: #1a1424;
+  --card-gold: #17120c;
+  --field: #0c0912;
+  --pill-on: #2a1f45;
+  --ico-bg: #221a30;
+
+  --line: #241c33;
+  --line-2: #2a2238;
+  --line-3: #3a2f50;
+  --line-4: #4a3d63;
+  --line-5: #2e2540;
+  --line-6: #221b2e;
+
+  --text: #f4f0fa;
+  --text-2: #d9d1e6;
+  --text-3: #c7bdd6;
+  --text-4: #c9bfd8;
+  --muted: #a99dbb;
+
+  --violet: #7c3aed;
+  --violet-2: #8b5cf6;
+  --violet-3: #a855f7;
+  --lavender: #d8b4fe;
+  --lavender-2: #b49bff;
+  --lavender-3: #e9d5ff;
+  --gold: #f5c76a;
+  --gold-ink: #1a1206;
+  --green: #34d399;
+
+  --ff-display: var(--font-display), "Unbounded", system-ui, sans-serif;
+  --ff-sans: var(--font-sans), "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ff-mono: var(--font-mono), "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --container: none;
+  --gutter: 24px;
+  --section-y: 110px;
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  overflow-x: clip;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--ff-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--lavender-2);
+}
+a:hover {
+  color: #d6c8ff;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+svg {
+  display: block;
+}
+
+section[id] {
+  scroll-margin-top: 90px;
+}
+
+.kicker {
+  font-family: var(--ff-mono);
+  font-size: 14px;
+  color: var(--lavender-2);
+}
+
+.h2 {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 1.05;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: var(--violet);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+.skip:focus {
+  top: 12px;
+  color: #fff;
+}
+
+/* ---------- Motion ---------- */
+
+@keyframes flicker {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    opacity: 1;
+    text-shadow:
+      0 0 6px rgba(200, 180, 255, 0.9),
+      0 0 22px rgba(139, 92, 246, 0.85),
+      0 0 52px rgba(124, 58, 237, 0.65);
+  }
+  20%,
+  24%,
+  55% {
+    opacity: 0.5;
+    text-shadow: none;
+  }
+}
+.neon {
+  animation: flicker 7s infinite;
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(3deg);
+  }
+}
+.float {
+  animation: floaty 5.5s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 8px #a855f7) drop-shadow(0 0 22px #7c3aed);
+  }
+  50% {
+    filter: drop-shadow(0 0 16px #d8b4fe) drop-shadow(0 0 48px #8b5cf6);
+  }
+}
+.glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes floor {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 56px;
+  }
+}
+
+@keyframes bolt {
+  0%,
+  86%,
+  100% {
+    opacity: 0;
+  }
+  87%,
+  89.5% {
+    opacity: 1;
+  }
+  88.5% {
+    opacity: 0.25;
+  }
+}
+.bolt {
+  opacity: 0;
+  animation: bolt 6s infinite;
+}
+
+@keyframes flash {
+  0%,
+  86%,
+  100% {
+    opacity: 0;
+  }
+  87% {
+    opacity: 0.18;
+  }
+  88.5% {
+    opacity: 0;
+  }
+  89.5% {
+    opacity: 0.12;
+  }
+}
+.flash {
+  opacity: 0;
+  animation: flash 6s infinite;
+  pointer-events: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.ring {
+  animation: spin 26s linear infinite;
+}
+.ring-rev {
+  animation: spin 40s linear infinite reverse;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.in {
+  animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(48px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: rise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 45%;
+  }
+}
+
+@keyframes ping {
+  0% {
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.75);
+  }
+  100% {
+    box-shadow: 0 0 0 12px rgba(52, 211, 153, 0);
+  }
+}
+.ping {
+  animation: ping 1.6s infinite;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.6);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 8px var(--gold);
+  animation: twinkle 2.6s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0%,
+  55% {
+    left: -60%;
+  }
+  100% {
+    left: 130%;
+  }
+}
+.btn {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.25s;
+}
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-20deg);
+  animation: shine 3.8s ease-in-out infinite;
+  pointer-events: none;
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 48px rgba(124, 58, 237, 0.85) !important;
+}
+.btn:active,
+.tap:active {
+  transform: scale(0.97);
+}
+.tap {
+  transition: transform 0.15s;
+}
+
+.ghost {
+  transition:
+    border-color 0.25s,
+    background 0.25s,
+    transform 0.25s;
+}
+.ghost:hover {
+  border-color: var(--lavender-2) !important;
+  background: rgba(139, 92, 246, 0.12);
+  transform: translateY(-3px);
+}
+
+.card {
+  transition:
+    transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.35s,
+    box-shadow 0.45s;
+}
+.card:hover {
+  transform: translateY(-10px);
+  border-color: var(--violet-2) !important;
+  box-shadow:
+    0 30px 60px -24px rgba(139, 92, 246, 0.7),
+    inset 0 0 0 1px rgba(139, 92, 246, 0.4);
+}
+.ico {
+  transition:
+    transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.45s;
+}
+.card:hover .ico {
+  transform: rotate(-10deg) scale(1.12);
+  box-shadow: 0 0 24px rgba(139, 92, 246, 0.7);
+}
+
+.prow {
+  transition:
+    padding 0.25s,
+    background 0.25s;
+}
+.prow:hover {
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+  background: rgba(139, 92, 246, 0.08);
+}
+
+.field {
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.field:focus {
+  outline: none;
+  border-color: var(--violet-3) !important;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.25);
+}
+
+.stroke-text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(139, 92, 246, 0.22);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --gutter: 16px;
+    --section-y: 48px;
+  }
+  .kicker {
+    font-size: 13px;
+  }
+  .h2 {
+    font-size: 30px;
+    line-height: 1.1;
+  }
+  .stroke-text {
+    -webkit-text-stroke-width: 1px;
+  }
+  .marquee {
+    animation-duration: 24s;
+  }
+  @keyframes floaty {
+    0%,
+    100% {
+      transform: translateY(0) rotate(-5deg);
+    }
+    50% {
+      transform: translateY(-12px) rotate(3deg);
+    }
+  }
+  @keyframes floor {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 0 40px;
+    }
+  }
+}
+
+@media (hover: none) {
+  .card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .card:hover .ico {
+    transform: none;
+    box-shadow: none;
+  }
+  .btn:hover,
+  .ghost:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

@@ -1,0 +1,206 @@
+.section {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 120px var(--gutter) 100px;
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.headText {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.headLead {
+  color: var(--muted);
+  max-width: 400px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line-2);
+  border-radius: 22px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 300px;
+  position: relative;
+  overflow: hidden;
+  /* Свой stacking context: водяной номер уходит под контент через z-index:-1. */
+  isolation: isolate;
+}
+
+.num {
+  position: absolute;
+  z-index: -1;
+  right: -10px;
+  top: -18px;
+  font-family: var(--ff-display);
+  font-weight: 900;
+  font-size: 110px;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(139, 92, 246, 0.18);
+  pointer-events: none;
+  user-select: none;
+}
+
+.ico {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  background: var(--ico-bg);
+  border: 1px solid var(--line-3);
+  color: var(--lavender);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 21px;
+}
+
+.vip {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--gold-ink);
+  background: var(--gold);
+  padding: 6px 10px;
+  border-radius: 6px;
+  box-shadow: 0 0 18px rgba(245, 199, 106, 0.5);
+}
+
+.text {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.price {
+  margin-top: auto;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.from {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.amount {
+  font-family: var(--ff-mono);
+  font-weight: 700;
+  font-size: 30px;
+  color: var(--gold);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 56px var(--gutter) 40px;
+  }
+  .head {
+    margin-bottom: 20px;
+  }
+  .headText {
+    gap: 6px;
+  }
+  .headLead {
+    display: none;
+  }
+  .grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .card {
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+    padding: 18px;
+    border-radius: 18px;
+    min-height: 0;
+  }
+  .num {
+    right: 70px;
+    top: -14px;
+    font-size: 72px;
+    -webkit-text-stroke-color: rgba(139, 92, 246, 0.16);
+  }
+  .ico {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+  }
+  .body {
+    flex: 1;
+    min-width: 0;
+    gap: 2px;
+  }
+  .title {
+    font-size: 16px;
+  }
+  .vip {
+    position: static;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    padding: 3px 7px;
+    border-radius: 5px;
+    box-shadow: 0 0 12px rgba(245, 199, 106, 0.5);
+  }
+  .text {
+    font-size: 14px;
+  }
+  .price {
+    margin-top: 0;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0;
+    flex-shrink: 0;
+    text-align: right;
+  }
+  .from {
+    font-size: 12px;
+  }
+  .per {
+    display: none;
+  }
+  .amount {
+    font-size: 17px;
+  }
+}

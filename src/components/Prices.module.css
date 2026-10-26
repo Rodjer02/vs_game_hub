@@ -1,0 +1,250 @@
+.section {
+  background: var(--bg-2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+
+.glowBg {
+  position: absolute;
+  right: -200px;
+  top: 40px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(closest-side, rgba(124, 58, 237, 0.18), rgba(124, 58, 237, 0));
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: var(--section-y) var(--gutter);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 44px;
+}
+
+.headText {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.seg {
+  display: inline-flex;
+  padding: 6px;
+  background: var(--card-3);
+  border: 1px solid var(--line-5);
+  border-radius: 14px;
+  gap: 4px;
+}
+
+.segBtn {
+  min-height: 44px;
+  padding: 10px 24px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-2);
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.segBtn[aria-pressed="true"] {
+  background: var(--violet);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.6);
+}
+
+.tabs {
+  display: none;
+}
+
+.tab {
+  min-height: 44px;
+  padding: 8px 18px;
+  border: 1.5px solid var(--line-3);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-2);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.tab[aria-pressed="true"] {
+  border-color: var(--violet-3);
+  background: var(--pill-on);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 14px rgba(139, 92, 246, 0.45);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 24px;
+}
+
+.col {
+  background: var(--card);
+  border: 1px solid var(--line-2);
+  border-radius: 22px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.colHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.colTitle {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.tag {
+  font-family: var(--ff-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--lavender);
+  border: 1px solid var(--line-3);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.rowL {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.note {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.rowR {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.price {
+  font-family: var(--ff-mono);
+  font-weight: 700;
+  font-size: 21px;
+  color: var(--gold);
+}
+
+.per {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.foot {
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+@media (max-width: 768px) {
+  .inner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .head {
+    margin-bottom: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .headText {
+    gap: 6px;
+  }
+  .seg {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 5px;
+    border-radius: 12px;
+  }
+  .segBtn {
+    padding: 8px;
+    border-radius: 9px;
+  }
+  .tabs {
+    display: flex;
+    gap: 8px;
+  }
+  .grid {
+    display: block;
+  }
+  .col {
+    padding: 4px 18px;
+    border-radius: 18px;
+    gap: 0;
+  }
+  .col[data-active="false"] {
+    display: none;
+  }
+  .colHead {
+    display: none;
+  }
+  .row {
+    padding: 15px 0;
+    gap: 12px;
+    border-top: 0;
+    border-bottom: 1px solid var(--line);
+    border-radius: 0;
+  }
+  .name {
+    font-size: 15px;
+  }
+  .note {
+    font-size: 13px;
+  }
+  .price {
+    font-size: 19px;
+  }
+  .per {
+    font-size: 12px;
+  }
+  .foot {
+    margin-top: 0;
+    font-size: 13px;
+  }
+}

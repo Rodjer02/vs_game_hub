@@ -1,0 +1,37 @@
+.wrap {
+  overflow: hidden;
+  background: var(--violet);
+  border-bottom: 1px solid var(--line);
+  transform: rotate(-1.2deg);
+  margin: -14px -20px 0;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 40px rgba(124, 58, 237, 0.5);
+}
+
+.track {
+  padding: 14px 0;
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: 20px;
+  color: #fff;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  gap: 40px;
+}
+
+.sep {
+  color: var(--gold);
+}
+
+@media (max-width: 768px) {
+  .wrap {
+    transform: rotate(-2deg);
+    margin: 0 -20px;
+  }
+  .track {
+    padding: 11px 0;
+    font-size: 15px;
+    gap: 26px;
+  }
+}
