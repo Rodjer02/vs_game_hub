@@ -131,6 +131,18 @@
   cursor: pointer;
 }
 
+/* Keyframes должны жить в модуле: Turbopack хэширует имена анимаций в CSS Modules. */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .menu {
   position: absolute;
   top: 100%;

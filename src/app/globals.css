@@ -226,15 +226,6 @@ section[id] {
   animation: pulseGlow 3s ease-in-out infinite;
 }
 
-@keyframes floor {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 0 56px;
-  }
-}
-
 @keyframes bolt {
   0%,
   86%,
@@ -469,17 +460,6 @@ section[id] {
   -webkit-text-stroke: 1.5px rgba(139, 92, 246, 0.22);
 }
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-12px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
 @media (max-width: 768px) {
   :root {
     --gutter: 16px;
@@ -505,14 +485,6 @@ section[id] {
     }
     50% {
       transform: translateY(-12px) rotate(3deg);
-    }
-  }
-  @keyframes floor {
-    from {
-      background-position: 0 0;
-    }
-    to {
-      background-position: 0 40px;
     }
   }
 }

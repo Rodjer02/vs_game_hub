@@ -16,6 +16,16 @@
   pointer-events: none;
 }
 
+/* Keyframes должны жить в модуле: Turbopack хэширует имена анимаций в CSS Modules. */
+@keyframes floor {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 56px;
+  }
+}
+
 .floor {
   position: absolute;
   left: -40%;
