@@ -27,6 +27,8 @@ export const site = {
   phone: "+7 700 757 73 48",
   phoneE164: "+77007577348",
   phoneHref: "tel:+77007577348",
+  /** Номер для wa.me без «+». */
+  whatsappPhone: "77007577348",
 
   address: {
     street: "Жирентаева 15А, 4 этаж",
@@ -47,7 +49,6 @@ export const site = {
   social: {
     // TODO: ссылка на Instagram клуба.
     instagram: "#",
-    whatsapp: "https://wa.me/77007577348",
     /** Карточка клуба в 2ГИС. */
     twoGis: `https://2gis.kz/${twoGis.city}/firm/${twoGis.firmId}`,
     /** Построить маршрут до клуба в 2ГИС. */

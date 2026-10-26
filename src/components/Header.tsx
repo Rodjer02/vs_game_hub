@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { NAV, site } from "@/data/site";
+import { waBookingLink } from "@/lib/whatsapp";
 import { CloseIcon, MenuIcon } from "./icons";
 import styles from "./Header.module.css";
 
@@ -46,7 +47,7 @@ export function Header() {
           <a href={site.phoneHref} className={styles.phone}>
             {site.phone}
           </a>
-          <a href="#booking" className={`${styles.cta} btn`}>
+          <a href={waBookingLink} className={`${styles.cta} btn`} target="_blank" rel="noopener noreferrer">
             Забронировать
           </a>
         </div>

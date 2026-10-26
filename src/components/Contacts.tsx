@@ -1,4 +1,5 @@
 import { site } from "@/data/site";
+import { waBookingLink } from "@/lib/whatsapp";
 import styles from "./Contacts.module.css";
 
 export function Contacts() {
@@ -51,7 +52,7 @@ export function Contacts() {
           <a className={`${styles.link} ghost tap`} href={social.instagram} target="_blank" rel="noopener noreferrer">
             Instagram
           </a>
-          <a className={`${styles.link} ghost tap`} href={social.whatsapp} target="_blank" rel="noopener noreferrer">
+          <a className={`${styles.link} ghost tap`} href={waBookingLink} target="_blank" rel="noopener noreferrer">
             WhatsApp
           </a>
           <a className={`${styles.link} ghost tap`} href={social.twoGisRoute} target="_blank" rel="noopener noreferrer">

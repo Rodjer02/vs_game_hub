@@ -31,7 +31,10 @@ npm start
 | Переменная | Зачем |
 | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Канонический адрес сайта: canonical, sitemap, Open Graph, schema.org |
-| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | Заявки с формы брони уходят в Telegram. Без них — только в лог сервера |
+
+## Заявки
+
+Бэкенда нет: все кнопки «Забронировать», карточки пакетов и форма брони ведут в WhatsApp клуба (`wa.me`) с предзаполненным текстом. Форма собирает имя, телефон, зону, дату и время в сообщение. Тексты и номер — `src/lib/whatsapp.ts`, `site.whatsappPhone`.
 
 ## SEO
 
@@ -46,9 +49,9 @@ npm start
 
 ```
 src/
-  app/            layout, page, globals.css, SEO-файлы, API брони
+  app/            layout, page, globals.css, SEO-файлы
   components/     секции лендинга, каждая со своим .module.css
   data/           контент: контакты, цены, зоны
-  lib/            форматирование цен
+  lib/            форматирование цен, ссылки WhatsApp
 material/         исходный макет
 ```

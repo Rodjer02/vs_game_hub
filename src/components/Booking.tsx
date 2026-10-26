@@ -3,47 +3,26 @@
 import { useState, type FormEvent } from "react";
 import { ZONES, type ZoneKey } from "@/data/prices";
 import { site } from "@/data/site";
+import { waFormLink } from "@/lib/whatsapp";
 import styles from "./Booking.module.css";
-
-type Status = "idle" | "sending" | "ok" | "error";
 
 export function Booking() {
   const [zone, setZone] = useState<ZoneKey>("pc-hall");
-  const [status, setStatus] = useState<Status>("idle");
-  const [error, setError] = useState("");
+  const [opened, setOpened] = useState(false);
 
-  async function onSubmit(e: FormEvent<HTMLFormElement>) {
+  function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const form = e.currentTarget;
-    const fd = new FormData(form);
-
-    const payload = {
+    const fd = new FormData(e.currentTarget);
+    const url = waFormLink({
       name: String(fd.get("name") ?? "").trim(),
       phone: String(fd.get("phone") ?? "").trim(),
       zone,
       date: String(fd.get("date") ?? ""),
       time: String(fd.get("time") ?? ""),
-      website: String(fd.get("website") ?? ""),
-    };
-
-    setStatus("sending");
-    setError("");
-
-    try {
-      const res = await fetch("/api/booking", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      const json: { ok?: boolean; error?: string } = await res.json().catch(() => ({}));
-      if (!res.ok || !json.ok) throw new Error(json.error ?? "Не удалось отправить заявку");
-      setStatus("ok");
-      form.reset();
-      setZone("pc-hall");
-    } catch (err) {
-      setStatus("error");
-      setError(err instanceof Error ? err.message : "Не удалось отправить заявку");
-    }
+    });
+    // Синхронно в обработчике сабмита — блокировщики всплывающих окон пропускают.
+    window.open(url, "_blank", "noopener,noreferrer");
+    setOpened(true);
   }
 
   return (
@@ -64,7 +43,7 @@ export function Booking() {
           </a>
         </div>
 
-        <form className={styles.form} onSubmit={onSubmit} noValidate={false}>
+        <form className={styles.form} onSubmit={onSubmit}>
           <div className={`${styles.grid2} ${styles.names}`}>
             <label className={styles.label}>
               Имя
@@ -122,19 +101,12 @@ export function Booking() {
             </label>
           </div>
 
-          {/* Ловушка для ботов: люди это поле не видят и не заполняют. */}
-          <label className={styles.hp} aria-hidden="true">
-            Сайт
-            <input type="text" name="website" tabIndex={-1} autoComplete="off" />
-          </label>
-
-          <button className={`${styles.submit} btn`} type="submit" disabled={status === "sending"}>
-            {status === "sending" ? "Отправляем…" : "Отправить заявку"}
+          <button className={`${styles.submit} btn`} type="submit">
+            Отправить заявку
           </button>
 
-          <p className={`${styles.status} ${status === "ok" ? styles.ok : ""} ${status === "error" ? styles.err : ""}`} role="status" aria-live="polite">
-            {status === "ok" && "Заявка отправлена. Перезвоним и подтвердим бронь."}
-            {status === "error" && `${error}. Позвони нам: ${site.phone}`}
+          <p className={`${styles.status} ${opened ? styles.ok : ""}`} role="status" aria-live="polite">
+            {opened && "Открыли WhatsApp с заполненной заявкой — нажми «Отправить» в чате."}
           </p>
         </form>
       </div>

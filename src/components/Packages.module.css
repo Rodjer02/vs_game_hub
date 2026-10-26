@@ -27,6 +27,12 @@
   gap: 12px;
   position: relative;
   overflow: hidden;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+.card:hover {
+  color: inherit;
 }
 
 .featured {

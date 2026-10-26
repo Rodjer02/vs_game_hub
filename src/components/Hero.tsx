@@ -1,4 +1,5 @@
 import { site } from "@/data/site";
+import { waBookingLink } from "@/lib/whatsapp";
 import { ArrowIcon, BoltIcon, GamepadIcon, PhoneIcon } from "./icons";
 import styles from "./Hero.module.css";
 
@@ -33,7 +34,7 @@ export function Hero() {
           </p>
 
           <div className={`${styles.actions} in`} style={{ animationDelay: ".36s" }}>
-            <a className={`${styles.primary} btn`} href="#booking">
+            <a className={`${styles.primary} btn`} href={waBookingLink} target="_blank" rel="noopener noreferrer">
               <span className={styles.long}>Забронировать место</span>
               <span className={styles.short}>Забронировать</span>
               <ArrowIcon className={styles.long} />

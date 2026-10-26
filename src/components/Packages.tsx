@@ -1,4 +1,5 @@
 import { PACKAGES } from "@/data/prices";
+import { waPackageLink } from "@/lib/whatsapp";
 import styles from "./Packages.module.css";
 
 export function Packages() {
@@ -13,7 +14,14 @@ export function Packages() {
 
       <div className={styles.grid}>
         {PACKAGES.map((p) => (
-          <article key={p.key} className={`${styles.card} ${p.featured ? styles.featured : ""} card reveal`}>
+          <a
+            key={p.key}
+            href={waPackageLink(p)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${styles.card} ${p.featured ? styles.featured : ""} card reveal`}
+            aria-label={`${p.title}: ${p.lead}. Написать в WhatsApp`}
+          >
             {p.featured && (
               <>
                 <span className={`star ${styles.s1}`} aria-hidden="true" />
@@ -26,7 +34,7 @@ export function Packages() {
             {p.badge && <span className={styles.badge}>{p.badge}</span>}
             <p className={styles.lead}>{p.lead}</p>
             <p className={styles.text}>{p.text}</p>
-          </article>
+          </a>
         ))}
       </div>
     </section>
